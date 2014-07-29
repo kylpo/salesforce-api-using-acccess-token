@@ -45,7 +45,7 @@ exports.apiCallWithRetry = function apiCallWithRetry(action, args, getRetryArgs,
             case null:
             case undefined:
                 // Success
-                callback(data);
+                callback(null, data);
                 break;
             case 401:
                 getRetryArgs(function (newArgs) {
