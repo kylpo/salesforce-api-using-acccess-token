@@ -48,7 +48,6 @@ exports.apiCallWithRetry = function apiCallWithRetry(action, args, getRetryArgs,
                 callback(data);
                 break;
             case 401:
-                debugger;
                 getRetryArgs(function (newArgs) {
                     if (newArgs === null) {
                         return callback(new Error("Failed to get retry args"));
@@ -63,12 +62,12 @@ exports.apiCallWithRetry = function apiCallWithRetry(action, args, getRetryArgs,
     };
 
     // Response handler for the second (retried) api call
-    var handleRetry = function (status, data) {
-        if (status != null) {
-            callback(data);
-        } else {
-            callback(status);
+    var handleRetry = function (err, data) {
+        if (err) {
+            return callback(new Error("Errored after retry with status code: " + err));
         }
+
+        return callback(null, data);
     };
 
     action.apply(undefined, args.concat(handleResponse));
