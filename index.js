@@ -135,7 +135,7 @@ exports.likeComment = function likeComment(connection, id, callback) {
 };
 
 exports.submitComment = function submitComment(connection, postId, message, callback) {
-    xhrWithAuth(callback, "POST", connection, API_PATH_PREFIX.concat("chatter/feed-items//" + postId + "/comments"), message);
+    xhrWithAuth(callback, "POST", connection, API_PATH_PREFIX.concat("chatter/feed-items/" + postId + "/comments"), message);
 };
 
 /**
