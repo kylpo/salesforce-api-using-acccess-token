@@ -114,6 +114,14 @@ exports.getMentions = function getMentions(connection, mention, callback) {
     xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/mentions/completions?q=" + encodeURIComponent(mention)));
 };
 
+exports.getTopics = function getTopics(connection, topic, callback) {
+    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/topics?exactMatch=true&q=" + encodeURIComponent(topic)));
+};
+
+exports.getHashtags = function getHashtags(connection, tag, callback) {
+    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/feed-items?q=" + encodeURIComponent(tag)));
+};
+
 exports.getBatch = function getBatch(connection, postIds, callback) {
     xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/feed-items/batch/" + postIds));
 };
