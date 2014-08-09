@@ -107,15 +107,15 @@ exports.getUsers = function getUsers(connection, name, callback) {
  * Perform xhrWithAuth GET with params to retrieve mention completions
  *
  * @param {Object} connection
- * @param {string} mention - text of a mention's name
+ * @param {string} query - text of a mention's name
  * @param {function(Object, Object=)} callback
  */
-exports.getMentions = function getMentions(connection, mention, callback) {
-    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/mentions/completions?q=" + encodeURIComponent(mention)));
+exports.getMentionCompletions = function getMentionCompletions(connection, query, callback) {
+    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/mentions/completions?q=" + encodeURIComponent(query)));
 };
 
-exports.getTopics = function getTopics(connection, topic, callback) {
-    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/topics?exactMatch=true&q=" + encodeURIComponent(topic)));
+exports.getTopicCompletions = function getTopicCompletions(connection, query, callback) {
+    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("connect/topics?q=" + encodeURIComponent(query)));
 };
 
 exports.getHashtags = function getHashtags(connection, tag, callback) {
