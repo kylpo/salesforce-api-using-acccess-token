@@ -114,6 +114,10 @@ exports.getMentionCompletions = function getMentionCompletions(connection, query
     xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/mentions/completions?q=" + encodeURIComponent(query)));
 };
 
+exports.getGroupMentionCompletions = function getGroupMentionCompletions(connection, query, callback) {
+    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("chatter/mentions/completions?type=Group&q=" + encodeURIComponent(query)));
+};
+
 exports.getTopicCompletions = function getTopicCompletions(connection, query, callback) {
     xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("connect/topics?q=" + encodeURIComponent(query)));
 };
