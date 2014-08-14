@@ -187,6 +187,10 @@ exports.deletePost = function(connection, id, callback) {
 
 /* ----------------- Core -------------------------*/
 
+exports.getRecent = function getRecent(connection, callback) {
+    xhrWithAuth(callback, "GET", connection, API_PATH_PREFIX.concat("recent"));
+};
+
 /**
  * Perform xhrWithAuth GET with params to retrieve actions
  *
